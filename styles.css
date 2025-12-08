@@ -1,0 +1,206 @@
+:root {
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --error-color: #cf6679;
+    --text-color: #e0e0e0;
+    --border-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll, we use internal scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.status-bar {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+/* Dashboard */
+.dashboard {
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0; /* Don't shrink the dashboard */
+    max-height: 40vh;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+button:active {
+    opacity: 0.7;
+}
+
+button.primary {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+button.secondary {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.table-container {
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+}
+
+.status-running { color: #ffd700; }
+.status-completed { color: var(--secondary-color); }
+.status-crashed { color: var(--error-color); font-weight: bold; }
+
+/* Test Arena */
+.test-arena {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1; /* Take remaining space */
+    min-height: 0; /* Allow flex shrinking */
+}
+
+h2 {
+    font-size: 1rem;
+    color: #888;
+}
+
+.test-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.test-controls button {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Scroll Container */
+.scroll-container {
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+    position: relative;
+    flex-grow: 1;
+    scroll-behavior: auto; /* Default, overridden by tests */
+}
+
+.marker {
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.marker.target {
+    background-color: var(--secondary-color);
+}
+
+.spacer {
+    height: 1000px;
+    background: repeating-linear-gradient(
+        45deg,
+        #222,
+        #222 10px,
+        #2a2a2a 10px,
+        #2a2a2a 20px
+    );
+    position: relative;
+}
+
+.ruler {
+    position: absolute;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+.ruler:nth-child(1) { top: 25%; }
+.ruler:nth-child(2) { top: 50%; }
+.ruler:nth-child(3) { top: 75%; }

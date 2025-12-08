@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scroll Tech Stress Tester</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Scroll Bug Hunter</h1>
+            <div class="status-bar" id="status-bar">Ready</div>
+        </header>
+
+        <section class="dashboard">
+            <div class="controls">
+                <button id="btn-run-all" class="primary">Run All Tests</button>
+                <button id="btn-clear" class="secondary">Clear Logs</button>
+            </div>
+            <div class="table-container">
+                <table id="results-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Test Name</th>
+                            <th>Status</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Results populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="test-arena">
+            <h2>Test Arena</h2>
+            <div class="test-controls">
+                <button data-test="windowScrollTo">Window.scrollTo (Instant)</button>
+                <button data-test="windowScrollToSmooth">Window.scrollTo (Smooth)</button>
+                <button data-test="scrollIntoView">scrollIntoView (Instant)</button>
+                <button data-test="scrollIntoViewSmooth">scrollIntoView (Smooth)</button>
+                <button data-test="scrollTopSet">scrollTop Assignment</button>
+                <button data-test="scrollByLoop">scrollBy Loop</button>
+                <button data-test="rafScroll">RAF Custom Scroll</button>
+                <button data-test="scrollSnap">CSS Scroll Snap</button>
+            </div>
+
+            <!-- This container handles the actual scrolling tests -->
+            <div id="scroll-container" class="scroll-container">
+                <div class="marker start">START</div>
+                <div class="spacer">
+                    <div class="ruler">25%</div>
+                    <div class="ruler">50%</div>
+                    <div class="ruler">75%</div>
+                </div>
+                <div class="marker target" id="scroll-target">TARGET ELEMENT</div>
+                <div class="spacer">
+                    <div class="ruler">125%</div>
+                    <div class="ruler">150%</div>
+                </div>
+                <div class="marker end">END</div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="app.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
